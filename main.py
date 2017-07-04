@@ -1,5 +1,4 @@
-from flask import Flask, request, redirect, render_template 
-import os #don't think I need this?
+from flask import Flask, request, render_template #redirect, will need to import this too if I get the redirect below to work :)
 
 app = Flask(__name__)
 app.config['DEBUG'] = True
@@ -40,7 +39,8 @@ def validate_user_input():
         email = ''
 
     if not username_err and not password_err and not password_check_err and not email_err:
-        return redirect('/welcome?user={0}'.format(username)) # maybe remove .format ?
+        return render_template('welcome.html', username = username)
+               #redirect("/welcome?user={0}".format(username)) 
     else:
         return render_template('index.html', username_err = username_err,
                                       password_err = password_err,
@@ -52,10 +52,10 @@ def validate_user_input():
                                       email = email)
 
 
-@app.route("/welcome", methods=['POST', 'GET'])
-def welcome():
-    username = request.form['username']
-    return render_template('welcome.html', username=username)
+#@app.route("/welcome", methods=['POST'])
+#def welcome():
+#    username = request.form['username']
+#    return render_template('welcome.html', username=username)
 
 
 app.run()
