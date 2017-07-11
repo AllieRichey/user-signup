@@ -7,7 +7,7 @@
     </head>
     <body>
         <h1>Signup</h1>
-        <form method ="POST">
+        <form action="/signup" method ="POST">
             <table>
                 <tr>
                     <td>
@@ -30,10 +30,10 @@
                 </tr>
                 <tr>
                     <td>
-                        <label for="password-check">Verify Password</label>
+                        <label for="password_check">Verify Password</label>
                     </td>
                     <td>
-                        <input name="password-check" type="password">
+                        <input name="password_check" type="password">
                         <span class="error">{{password_check_err}}</span>
                     </td>
                 </tr>
